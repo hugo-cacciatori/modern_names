@@ -1,0 +1,11 @@
+{
+  "id": "modern_names",
+  "name": "Modern Names",
+  "version": "0.1.0",
+  "api": 2,
+  "entry": "main.lua",
+  "games": ["all"],
+  "permissions": ["engine_internals"],
+  "description": "Displays Pokémon species names in modern title case across all generations while preserving custom nicknames.",
+  "author": "Hugo Cacciatori"
+}
