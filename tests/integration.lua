@@ -14,7 +14,15 @@ end
 
 -- ------------------------------------------------------------ 1. Pure Casing & Exceptions
 local mainInit = assert(loadfile(MOD_PATH .. "/main.lua"))()
-local dummyMod = { hooks = { wrap = function() end } }
+local dummyMod = { hooks = { wrap = function() end }, path = MOD_PATH }
+-- the engine's mod:read: a file of the mod's own folder, nil when absent
+function dummyMod:read(rel)
+  local handle = io.open(MOD_PATH .. "/" .. rel, "rb")
+  if not handle then return nil end
+  local data = handle:read("*a")
+  handle:close()
+  return data
+end
 mainInit(dummyMod)
 local format = dummyMod.exports.format
 
